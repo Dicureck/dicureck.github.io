@@ -97,6 +97,10 @@ class SiteTests(unittest.TestCase):
         self.assertIn('showCountersUnavailable()', JS)
         self.assertIn('.evidence-grid', CSS)
 
+    def test_demo_handlers_bind_to_all_matching_elements(self):
+        self.assertIn("$('.demo-link').forEach(", JS)
+        self.assertNotIn("$" + "('.demo-link').forEach(", JS.replace("$('.demo-link').forEach(", ""))
+
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)
