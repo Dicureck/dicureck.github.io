@@ -96,3 +96,8 @@ The portfolio supports a reversible **EN / ES** selector at the top of both the 
 
 Language preference is saved locally when browser storage is available. The language layer translates interface text while the original deterministic data calculation remains unchanged. [INTEBI.ONLINE](https://intebi.online/) is separately linked from the contact section.
 
+
+
+## Original Enterprise BI demonstration
+
+The [bilingual standalone Enterprise BI dashboard](https://dicureck.github.io/enterprise-bi.html) uses the identical fictional 72-order fixture from the [Python/SQL/RDL/DAX/Tableau laboratory](https://github.com/Dicureck/Dicureck/tree/main/engineering-labs/enterprise-bi-reporting). It supports region/channel filters, reconciled KPIs, monthly bars and CSV export. The native SSRS, Power BI and Tableau runtimes are still unverified.

@@ -318,6 +318,14 @@
   "Measured result-equivalent query rewrites and evidence limitations.": "Reescrituras de consultas con resultados equivalentes, mediciones y límites de evidencia.",
   "Case studies ↗": "Casos de estudio ↗",
   "Melissa Castro · Public engineering evidence & project roadmap ·": "Melissa Castro · Evidencias de ingeniería y hoja de ruta ·",
+  "ENTERPRISE BI LIVE ↗": "DEMO BI EMPRESARIAL ↗",
+  "04 / Enterprise BI reporting — one verified fictional dataset": "04 / Reporting empresarial — un único conjunto de datos ficticios",
+  "Enterprise sales dashboard": "Dashboard de ventas empresariales",
+  "72 source-consistent invented orders, financial KPIs, region/channel filters and CSV export. No private backend.": "72 órdenes ficticias verificadas, indicadores financieros, filtros por región/canal y descarga CSV. Sin servidores privados.",
+  "Open enterprise BI demo ↗": "Abrir demo BI empresarial ↗",
+  "ORIGINAL REPORT DEFINITION": "DEFINICIÓN ORIGINAL DE REPORTE",
+  "Original parameterized Report Builder RDL and matching source definitions. Native SSRS, Power BI and Tableau runtime validation remains pending.": "RDL original con parámetros y definiciones coherentes. Las pruebas nativas en SSRS, Power BI y Tableau siguen pendientes.",
+  "Inspect source and verification ↗": "Ver código y verificación ↗",
   "Return to portfolio": "Volver al portafolio",
   "· No client records or production credentials.": "· Sin datos de clientes ni credenciales de producción."
 };
