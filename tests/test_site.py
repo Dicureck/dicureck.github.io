@@ -101,6 +101,14 @@ class SiteTests(unittest.TestCase):
         self.assertIn("$('.demo-link').forEach(", JS)
         self.assertNotIn("$" + "('.demo-link').forEach(", JS.replace("$('.demo-link').forEach(", ""))
 
+    def test_immutable_browser_script_matches_reviewed_source(self):
+        pinned = ROOT / 'app.20261015-stable.js'
+        self.assertTrue(pinned.exists(), 'missing version-pinned JavaScript')
+        self.assertEqual(JS, pinned.read_text(encoding='utf-8'))
+        self.assertIn('src="app.20261015-stable.js"', HTML)
+        self.assertIn("$('.demo-link').forEach(", JS)
+        self.assertIn("updateLab(Object.prototype.hasOwnProperty.call(configs, initialDemo)", JS)
+
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)
