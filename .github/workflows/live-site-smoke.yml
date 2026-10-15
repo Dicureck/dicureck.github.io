@@ -1,5 +1,7 @@
 name: Public Website — Live Dashboard Smoke
 on:
+  push:
+    branches: [main]
   workflow_run:
     workflows: ["pages build and deployment"]
     types: [completed]
@@ -22,6 +24,26 @@ jobs:
         run: |
           pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
+      - name: Wait until public Pages serves the updated dashboard script
+        run: |
+          python - <<'PY'
+          import time, urllib.request
+          for attempt in range(60):
+              request = urllib.request.Request(
+                  'https://dicureck.github.io/?smoke=' + str(attempt),
+                  headers={'Cache-Control': 'no-cache', 'User-Agent': 'portfolio-smoke/1.0'})
+              try:
+                  with urllib.request.urlopen(request, timeout=12) as response:
+                      html = response.read().decode('utf-8')
+                  if 'app.20261015-stable.js' in html:
+                      print('Production index references the corrected immutable JavaScript')
+                      break
+              except Exception as err:
+                  print('Waiting for production Pages:', type(err).__name__)
+              time.sleep(7)
+          else:
+              raise RuntimeError('Production did not publish versioned JavaScript in time')
+          PY
       - name: Verify live dashboard values and browser errors
         run: python tests/live_smoke.py
       - name: Save production browser evidence
