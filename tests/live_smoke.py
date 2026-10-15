@@ -42,4 +42,33 @@ with sync_playwright() as p:
         page.locator(".lab-console").screenshot(path=str(OUT / f"{mode}-dashboard.png"), animations="disabled")
         print(f"LIVE PASS {mode}: data, 12 bars, filtering controls, CSV, zero JS errors")
         page.close()
+    # Bilingual production check: language change must preserve synthetic KPIs
+    # and navigate to the public roadmap without losing Spanish preference.
+    page = browser.new_page(viewport={"width": 1280, "height": 850})
+    errors = []
+    page.on("pageerror", lambda error: errors.append(str(error)))
+    page.goto(BASE + "?demo=finance&lang=es#lab", wait_until="domcontentloaded", timeout=45000)
+    page.locator("#lab-panel-title").get_by_text(
+        "Resumen de inteligencia financiera", exact=True
+    ).wait_for(timeout=20000)
+    assert page.locator("html").get_attribute("lang") == "es"
+    assert page.locator("#chart-svg rect").count() == 12
+    assert "lang=es" in page.locator("a.nav-roadmap").get_attribute("href")
+    assert page.locator(".intebi-website-link").get_attribute("href") == "https://intebi.online/"
+    page.locator('[data-set-language="en"]').click()
+    page.locator("#lab-panel-title").get_by_text(
+        "Financial Intelligence Overview", exact=True
+    ).wait_for(timeout=10000)
+    page.locator('[data-set-language="es"]').click()
+    page.locator("#lab-panel-title").get_by_text(
+        "Resumen de inteligencia financiera", exact=True
+    ).wait_for(timeout=10000)
+    with page.expect_navigation(wait_until="domcontentloaded"):
+        page.locator("a.nav-roadmap").click()
+    page.locator("h1").get_by_text("Hoja de ruta y", exact=False).wait_for(timeout=20000)
+    assert page.locator("html").get_attribute("lang") == "es"
+    assert not errors, errors
+    page.screenshot(path=str(OUT / "roadmap-spanish.png"), full_page=False)
+    print("LIVE PASS language EN/ES: finance dashboard, INTEBI link, Spanish roadmap")
+    page.close()
     browser.close()

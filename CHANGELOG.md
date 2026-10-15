@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased] — EN / ES and discoverability
+
+- Added a visible English/Spanish language selector on the main portfolio and public roadmap.
+- Localized the technical project descriptions and dynamic demo labels without changing synthetic calculations.
+- Kept selected language across portfolio, roadmap and dashboard deep links.
+- Added prominent roadmap links to main navigation and hero actions.
+- Linked the INTEBI business website and retained direct email contact.
+- Extended browser tests for language switching, roadmap navigation and the website link.
+
 ## [Unreleased] — public roadmap and evidence
 
 - Added [responsive public roadmap and evidence](roadmap.html), linked from the portfolio footer.

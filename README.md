@@ -86,3 +86,13 @@ Static resources use a release query string so updated CSS/JS is less likely to 
 ## Public engineering roadmap and evidence
 
 [Open the roadmap, verification boundaries and genuine GitHub Actions screenshots](https://dicureck.github.io/roadmap.html). It distinguishes the SQL Server runtime benchmark, verified offline labs and unverified future integration work. The public screenshot artifact was captured by the [real-site browser CI](https://github.com/Dicureck/dicureck.github.io/actions/runs/38812402350).
+
+## Languages and visible roadmap
+
+The portfolio supports a reversible **EN / ES** selector at the top of both the [main portfolio](https://dicureck.github.io/) and [public roadmap](https://dicureck.github.io/roadmap.html). For shareable direct Spanish links use:
+
+- [Portfolio in Spanish](https://dicureck.github.io/?lang=es)
+- [Roadmap in Spanish](https://dicureck.github.io/roadmap.html?lang=es)
+
+Language preference is saved locally when browser storage is available. The language layer translates interface text while the original deterministic data calculation remains unchanged. [INTEBI.ONLINE](https://intebi.online/) is separately linked from the contact section.
+
