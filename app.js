@@ -288,7 +288,8 @@
       items[next].focus();updateLab(items[next].dataset.lab);setDemoLink(items[next].dataset.lab);
     });
   });
-  $$('.demo-link').forEach(button => button.addEventListener('click', () => {
+  $('.demo-link').forEach(button => button.addEventListener('click', (event) => {
+    event.preventDefault();
     updateLab(button.dataset.openDemo);
     setDemoLink(button.dataset.openDemo);
     $('#lab').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
