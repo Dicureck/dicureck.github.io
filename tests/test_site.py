@@ -97,5 +97,22 @@ class SiteTests(unittest.TestCase):
             self.assertTrue((ROOT / f).exists(), f)
         self.assertIn('MIT License', (ROOT / 'LICENSE').read_text())
 
+    def test_header_monogram_is_not_split_into_css_grid_items(self):
+        self.assertIn('class="brand-mark" aria-hidden="true">MC</span>', HTML)
+        self.assertNotIn('class="brand-mark">M<span>.</span>C', HTML)
+        self.assertIn('.brand-mark::after', CSS)
+
+    def test_back_to_top_has_static_fallback_and_scripted_scroll(self):
+        self.assertIn('id="top" class="page-top-anchor"', HTML)
+        self.assertNotIn('class="site-header" id="top"', HTML)
+        self.assertEqual(2, HTML.count('data-scroll-top'))
+        self.assertIn("$('[data-scroll-top]')", JS)
+        self.assertIn('window.scrollTo({top:0, left:0', JS)
+
+    def test_desktop_nav_type_is_legible_and_tablet_menu_works(self):
+        self.assertIn('.nav-links a,.nav-action{font-size:12px;', CSS)
+        self.assertIn('@media(max-width:980px)', CSS)
+        self.assertIn('.nav-links.is-open{display:flex}', CSS)
+
 if __name__ == '__main__':
     unittest.main()
