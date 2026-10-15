@@ -65,3 +65,22 @@
 .evidence-next>div:first-child{max-width:630px}.evidence-next h3{margin-top:8px}.evidence-next p{margin-bottom:0}.evidence-next .evidence-actions{max-width:350px}
 @media(max-width:980px){.evidence-grid{grid-template-columns:1fr 1fr}.evidence-grid .evidence-card:last-child{grid-column:1/-1}.evidence-next{display:block}.evidence-next .evidence-actions{max-width:none;margin-top:20px}}
 @media(max-width:620px){.evidence-grid{grid-template-columns:1fr}.evidence-grid .evidence-card:last-child{grid-column:auto}.evidence-card,.evidence-next{padding:23px}.evidence-card p,.evidence-next p{font-size:13px}.evidence-section{scroll-margin-top:78px}}
+
+/* EN / ES language switch, visible roadmap and linked INTEBI business website. */
+.language-switch{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid #395471;border-radius:8px;background:#0d1729;flex:none}
+.language-switch button{border:0;border-radius:5px;min-height:34px;min-width:34px;background:transparent;color:#a9bbd0;font:700 11px 'Space Mono',monospace}
+.language-switch button[aria-pressed="true"]{background:#1a4054;color:#71edf6}
+.language-switch button:hover{color:white}
+.language-switch button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.nav-links .nav-roadmap{color:var(--cyan)}
+.button.roadmap-hero{border-color:#5976a4;color:#c6b5ff;background:linear-gradient(120deg,#13172a,#1b2440)}
+.button.roadmap-hero:hover{color:white;border-color:#c2abff}
+.contact-email a{color:var(--cyan);text-decoration:none;border-bottom:1px solid #4e8495}
+.contact-email .intebi-website-link{color:#cbb9ff;border-bottom-color:#8774b5}
+.contact-email a:hover{color:white}
+.contact-separator{color:#8398b4}
+.navigation{gap:13px}
+.nav-links{gap:15px}
+.nav-links a,.nav-action{font-size:11px}
+@media(max-width:1150px){.navigation{height:76px;min-height:76px}.nav-action{display:none}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:76px;left:0;right:0;padding:15px 20px 25px;background:#0c1424;border-bottom:1px solid #324762;box-shadow:0 20px 40px #0008;flex-direction:column;align-items:stretch;gap:0}.nav-links.is-open{display:flex}.nav-links a{padding:14px;border-bottom:1px solid #25374d;font-size:13px}}
+@media(max-width:450px){.navigation{gap:9px}.language-switch button{min-width:30px;min-height:32px;font-size:10px}.brand{gap:9px}.contact-email{font-size:10px;line-height:2}.contact-separator{display:block;font-size:0;height:2px}}

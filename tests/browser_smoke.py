@@ -47,4 +47,24 @@ with sync_playwright() as p:
     assert "Financial" in page.locator("#lab-panel-title").inner_text()
     assert "SU" in page.locator("#metric-1-value").inner_text()
     page.close()
+    page = browser.new_page(viewport={"width": 1200, "height": 820})
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.route("https://api.github.com/**", lambda route: route.abort())
+    page.goto((ROOT / "index.html").as_uri() + "?lang=es&demo=finance#lab", wait_until="domcontentloaded")
+    assert page.locator("html").get_attribute("lang") == "es"
+    assert "Resumen de inteligencia financiera" in page.locator("#lab-panel-title").inner_text()
+    assert "VER HOJA DE RUTA" in page.locator(".roadmap-hero").inner_text()
+    assert "lang=es" in page.locator("a.nav-roadmap").get_attribute("href")
+    assert "https://intebi.online/" == page.locator(".intebi-website-link").get_attribute("href")
+    assert page.locator("#chart-svg rect").count() == 12
+    page.locator('[data-set-language="en"]').click()
+    assert page.locator("#lab-panel-title").inner_text() == "Financial Intelligence Overview"
+    page.locator('[data-set-language="es"]').click()
+    assert page.locator("#lab-panel-title").inner_text() == "Resumen de inteligencia financiera"
+    page.goto((ROOT / "roadmap.html").as_uri() + "?lang=es", wait_until="domcontentloaded")
+    assert page.locator("html").get_attribute("lang") == "es"
+    assert "Hoja de ruta" in page.locator("h1").inner_text()
+    assert not errors, errors
+    page.close()
     browser.close()

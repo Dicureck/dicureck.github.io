@@ -109,6 +109,20 @@ class SiteTests(unittest.TestCase):
         self.assertIn("$('.demo-link').forEach(", JS)
         self.assertIn("updateLab(Object.prototype.hasOwnProperty.call(configs, initialDemo)", JS)
 
+    def test_bilingual_roadmap_and_business_link(self):
+        lang_js = (ROOT / 'i18n.20261015.js').read_text(encoding='utf-8')
+        road = (ROOT / 'roadmap.html').read_text(encoding='utf-8')
+        self.assertIn('data-set-language="en"', HTML)
+        self.assertIn('data-set-language="es"', HTML)
+        self.assertIn('data-set-language="es"', road)
+        self.assertIn('i18n.20261015.js', HTML)
+        self.assertIn('i18n.20261015.js', road)
+        self.assertIn('href="roadmap.html"', HTML)
+        self.assertIn('href="https://intebi.online/"', HTML)
+        self.assertIn('href="mailto:info@intebi.online"', HTML)
+        self.assertIn('localStorage', lang_js)
+        self.assertIn('history.replaceState', lang_js)
+
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)
