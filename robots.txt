@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dicureck.github.io/sitemap.xml
