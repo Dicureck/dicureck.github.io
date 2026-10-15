@@ -117,6 +117,7 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('class="site-header" id="top"', HTML)
         self.assertEqual(2, HTML.count('data-scroll-top'))
         self.assertIn("$('[data-scroll-top]').forEach", JS)
+        self.assertNotIn("  $('[data-scroll-top]').forEach", JS)
         self.assertIn('window.scrollTo({top:0, left:0', JS)
 
     def test_desktop_nav_type_is_legible_and_tablet_menu_works(self):
