@@ -70,3 +70,14 @@ Code and visual design are provided as an original portfolio site under the MIT 
 Each dashboard runs entirely in the visitor's browser on deterministic fictional data. Links to technical case studies lead to the canonical [engineering profile repository](https://github.com/Dicureck/Dicureck/tree/main/case-studies).
 
 **Availability:** GitHub REST counters may be unavailable when the API is rate-limited; those values show N/A rather than fabricated figures. The demo charts remain usable offline.
+
+
+## Direct interactive dashboard links
+
+Open the public, entirely synthetic interactive dashboards directly from a laboratory repository:
+
+- [Logistics dashboard](https://dicureck.github.io/?demo=logistics#lab)
+- [Finance dashboard](https://dicureck.github.io/?demo=finance#lab)
+- [Incident dashboard](https://dicureck.github.io/?demo=incidents#lab)
+
+Static resources use a release query string so updated CSS/JS is less likely to be obscured by browser cache. If an earlier version appears, hard refresh once. No private data is loaded.
