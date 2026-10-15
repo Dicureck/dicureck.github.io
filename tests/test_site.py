@@ -100,7 +100,7 @@ class SiteTests(unittest.TestCase):
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)
-        self.assertIn('if (!response.ok) return', JS)
+        self.assertIn('if (!response.ok) { showCountersUnavailable(); return; }', JS)
 
     def test_public_assets_and_license(self):
         for f in ['assets/favicon.svg', 'assets/preview.svg', '.nojekyll', 'robots.txt', 'sitemap.xml', 'LICENSE', 'README.md', '.github/workflows/ci.yml']:
