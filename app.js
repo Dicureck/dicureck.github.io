@@ -280,36 +280,54 @@
     $$('.project-card').forEach(card => {card.hidden = filter !== 'all' && card.dataset.category !== filter;});
   }));
   $$('.lab-tabs [role=tab]').forEach((button, index, items) => {
-    button.addEventListener('click', () => updateLab(button.dataset.lab));
+    button.addEventListener('click', () => { updateLab(button.dataset.lab); setDemoLink(button.dataset.lab); });
     button.addEventListener('keydown', event => {
       if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
       event.preventDefault();
       const next = event.key === 'Home' ? 0 : event.key === 'End' ? items.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + items.length) % items.length;
-      items[next].focus();updateLab(items[next].dataset.lab);
+      items[next].focus();updateLab(items[next].dataset.lab);setDemoLink(items[next].dataset.lab);
     });
   });
   $$('.demo-link').forEach(button => button.addEventListener('click', () => {
     updateLab(button.dataset.openDemo);
+    setDemoLink(button.dataset.openDemo);
     $('#lab').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
   }));
   $('#lab-filter').addEventListener('change', renderMetrics);
   $('#download-data').addEventListener('click', downloadCSV);
-  updateLab('logistics');
+  // Deep links from GitHub READMEs and case studies: ?demo=finance#lab.
+  // Unknown values are ignored. No server, secrets or analytics tracking.
+  const initialDemo = new URLSearchParams(window.location.search).get('demo');
+  updateLab(Object.prototype.hasOwnProperty.call(configs, initialDemo) ? initialDemo : 'logistics');
+  function setDemoLink(key) {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('demo', key);
+      url.hash = 'lab';
+      window.history.replaceState(null, '', url.href);
+    } catch (_) { /* Embedded test pages may have an opaque origin. */ }
+  }
+
 
   // Public activity: fetched from GitHub's public API. No authentication or secrets.
   // On network/rate-limit failure, show an em dash instead of guessed numbers.
+  function showCountersUnavailable() {
+    // GitHub may be rate limited or inaccessible from a visitor's browser.
+    $('#repo-count').textContent = 'N/A';
+    $('#star-count').textContent = 'N/A';
+  }
   async function refreshPublicCounters() {
     try {
       const response = await fetch('https://api.github.com/users/Dicureck/repos?type=owner&per_page=100&sort=full_name', {
         headers: {Accept: 'application/vnd.github+json'}
       });
-      if (!response.ok) return;
+      if (!response.ok) { showCountersUnavailable(); return; }
       const repos = await response.json();
-      if (!Array.isArray(repos) || repos.length === 100) return; // Incomplete paging is not a valid total.
+      if (!Array.isArray(repos) || repos.length === 100) { showCountersUnavailable(); return; } // Incomplete paging is not a valid total.
       const ownedPublic = repos.filter(repo => !repo.private && repo.owner && repo.owner.login.toLowerCase() === 'dicureck');
       $('#repo-count').textContent = String(ownedPublic.length).padStart(2, '0');
       $('#star-count').textContent = String(ownedPublic.reduce((total, repo) => total + Number(repo.stargazers_count || 0), 0)).padStart(2, '0');
-    } catch (_) { /* Offline and API rate limits are acceptable; no false counters. */ }
+    } catch (_) { showCountersUnavailable(); /* No guessed metrics. */ }
   }
   refreshPublicCounters();
 

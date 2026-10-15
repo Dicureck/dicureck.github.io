@@ -87,6 +87,16 @@ class SiteTests(unittest.TestCase):
         self.assertIn('URL.createObjectURL(blob)', JS)
         self.assertIn('renderChart(series', JS)
 
+    def test_direct_demo_links_and_case_studies(self):
+        self.assertIn('id="case-studies"', HTML)
+        self.assertIn('?demo=logistics#lab', HTML)
+        self.assertIn('?demo=finance#lab', HTML)
+        self.assertIn('?demo=incidents#lab', HTML)
+        self.assertIn('new URLSearchParams(window.location.search)', JS)
+        self.assertIn('history.replaceState', JS)
+        self.assertIn('showCountersUnavailable()', JS)
+        self.assertIn('.evidence-grid', CSS)
+
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)

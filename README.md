@@ -59,3 +59,14 @@ tests/               — dependency-free repository checks
 ## License and disclosure
 
 Code and visual design are provided as an original portfolio site under the MIT License. The projects linked from the site have their own licensing and documentation. Public demonstration data is 100% fictional.
+
+
+## Direct dashboard links (v1.1)
+
+- [Logistics interactive dashboard](https://dicureck.github.io/?demo=logistics#lab)
+- [Finance interactive dashboard](https://dicureck.github.io/?demo=finance#lab)
+- [Incident interactive dashboard](https://dicureck.github.io/?demo=incidents#lab)
+
+Each dashboard runs entirely in the visitor's browser on deterministic fictional data. Links to technical case studies lead to the canonical [engineering profile repository](https://github.com/Dicureck/Dicureck/tree/main/case-studies).
+
+**Availability:** GitHub REST counters may be unavailable when the API is rate-limited; those values show N/A rather than fabricated figures. The demo charts remain usable offline.
