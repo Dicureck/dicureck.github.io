@@ -123,6 +123,14 @@ class SiteTests(unittest.TestCase):
         self.assertIn('localStorage', lang_js)
         self.assertIn('history.replaceState', lang_js)
 
+    def test_lab_status_badges_match_engine_evidence(self):
+        lang_js = (ROOT / 'i18n.20261015.js').read_text(encoding='utf-8')
+        self.assertIn('SQL SERVER CI VERIFIED', HTML)
+        self.assertIn('ORACLE FREE VERIFIED', HTML)
+        self.assertNotIn('BENCHMARKS PENDING', HTML)
+        self.assertIn('SQL SERVER CI VERIFIED', lang_js)
+        self.assertIn('ORACLE FREE VERIFIED', lang_js)
+
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)

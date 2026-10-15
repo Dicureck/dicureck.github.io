@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased] — evidence accuracy
+
+- Updated SQL Server and Oracle lab labels to reflect verified CI / Oracle Free runtime execution, preserving the distinction from production and Oracle 12.1 validation.
+- Added a regression check that prevents stale portfolio status labels.
+
 ## [Unreleased] — EN / ES and discoverability
 
 - Added a visible English/Spanish language selector on the main portfolio and public roadmap.
