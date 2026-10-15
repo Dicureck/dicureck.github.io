@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark"><meta name="theme-color" content="#080c17">
+<meta name="description" content="Melissa Castro's transparent engineering portfolio roadmap with verifiable CI runs, synthetic demos, implementation milestones and known limitations.">
+<link rel="canonical" href="https://dicureck.github.io/roadmap.html"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<title>Engineering Roadmap & Evidence | Melissa Castro</title>
+<style>
+:root{color-scheme:dark;--bg:#090e19;--panel:#111e31;--line:#2b405e;--text:#edf5ff;--muted:#a9b9d0;--cyan:#5ce4ed;--purple:#b7a1ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 88% 5%,#30245350,transparent 37%),linear-gradient(#090e19,#0c1424);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:var(--cyan)}a:hover{color:#fff}a:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}header,main,footer{max-width:1180px;margin:auto;padding-left:24px;padding-right:24px}
+header{padding-top:25px;padding-bottom:25px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+header strong{letter-spacing:.08em;font-size:14px}header nav{display:flex;flex-wrap:wrap;gap:20px}header nav a{text-decoration:none;font-size:13px;font-weight:700}
+main{padding-top:65px;padding-bottom:88px}.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--cyan);font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(38px,7vw,70px);letter-spacing:-.05em;line-height:1.07;margin:16px 0}h1 em{font-style:normal;color:var(--purple)}.lede{color:var(--muted);font-size:18px;max-width:770px}
+.summary{display:flex;gap:18px;flex-wrap:wrap;padding:24px 0 30px;margin-top:20px}.summary a{display:inline-flex;border:1px solid var(--line);padding:11px 16px;border-radius:7px;text-decoration:none;font-weight:650}
+h2{font-size:27px;letter-spacing:-.03em;margin:0 0 25px}section{margin-top:64px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{border:1px solid var(--line);background:linear-gradient(145deg,#131f32,#0f1829);padding:27px;border-radius:12px;min-width:0}.card h3{margin:9px 0 10px;font-size:20px;line-height:1.3}.card p{color:var(--muted);font-size:14px;margin:0 0 13px}.card a{font-size:14px;font-weight:650}.status{font-size:11px;letter-spacing:.09em;color:var(--cyan);font-weight:800}.status.planned{color:var(--purple)}.full{grid-column:1/-1}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;min-width:650px;width:100%}th,td{text-align:left;padding:16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}th{color:var(--cyan);background:#18263d;font-size:12px;letter-spacing:.06em;text-transform:uppercase}td{color:var(--muted)}tr:last-child td{border-bottom:0}
+.notice{border-left:3px solid var(--cyan);background:#102035;padding:18px 22px;color:var(--muted);border-radius:5px}
+footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:35px;color:var(--muted);font-size:13px}
+@media(max-width:840px){.cards{grid-template-columns:1fr 1fr}}@media(max-width:600px){.cards{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}main{padding-top:45px}.lede{font-size:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><strong>MC / ENGINEERING INTELLIGENCE</strong><nav aria-label="Navigation"><a href="/">PORTFOLIO ↗</a><a href="/?demo=logistics#lab">LIVE LAB ↗</a><a href="https://github.com/Dicureck/Dicureck/tree/main/knowledge-base">KNOWLEDGE BASE ↗</a></nav></header>
+<main>
+<p class="eyebrow">PUBLIC DEVELOPMENT TRACKER / OCT 2026</p>
+<h1>Roadmap &amp; <em>verified evidence.</em></h1>
+<p class="lede">Working implementations, measured experiments and future research — clearly separated. All public demo datasets are independently generated and fictional.</p>
+<div class="summary"><a href="#verified">Verified work ↓</a><a href="#next">Next engineering milestones ↓</a><a href="#evidence">Browser evidence ↓</a></div>
+<section id="verified"><h2>01 / Verified and publicly inspectable</h2>
+<div class="cards">
+<article class="card"><span class="status">VERIFIED · LIVE SITE</span><h3>Interactive data dashboards</h3><p>Logistics, finance and incident KPI filters, generated SVG charts and CSV downloads. The published site is tested in Chromium.</p><a href="https://github.com/Dicureck/dicureck.github.io/actions/runs/38812402350">Live-site browser verification ↗</a></article>
+<article class="card"><span class="status">VERIFIED · SQL SERVER CI</span><h3>SQL Performance Lab</h3><p>Real SQL Server Developer container, synthetic database, complete-row equality checks and one observed CI benchmark. Not a production benchmark.</p><a href="https://github.com/Dicureck/sql-performance-lab/blob/main/docs/verified-ci-benchmark-2026-10-15.md">Measured CI evidence ↗</a></article>
+<article class="card"><span class="status">VERIFIED · OFFLINE CI</span><h3>Python Automation + C#</h3><p>Original reporting applications, dry-run mail previews, synthetic JSON, .NET validation and automated tests. Live email/model integrations remain unverified.</p><a href="https://github.com/Dicureck/Dicureck/actions/workflows/engineering-labs.yml">Engineering Labs CI ↗</a></article>
+</div></section>
+<section id="next"><h2>02 / Implementation and verification backlog</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Next milestone</th><th>Current boundary</th><th>Track work</th></tr></thead><tbody>
+<tr><td>SQL Server benchmark expansion</td><td>One real CI benchmark exists; publish execution plans, reads and more independent trials.</td><td><a href="https://github.com/Dicureck/Dicureck/issues/7">Issue #7 ↗</a></td></tr>
+<tr><td>Oracle cross-engine validation</td><td>Offline toolkit verified; no live SQL Server ↔ Oracle parity evidence.</td><td><a href="https://github.com/Dicureck/Dicureck/issues/9">Issue #9 ↗</a></td></tr>
+<tr><td>Native Tableau / reporting examples</td><td>Methodology exists; licensed workbook, SSRS and Crystal Reports runtimes not verified.</td><td><a href="https://github.com/Dicureck/Dicureck/issues/8">Issue #8 ↗</a></td></tr>
+<tr><td>Wiki and GitHub Projects</td><td>Canonical Markdown documentation exists; native Wiki/Projects synchronization needs authorized access.</td><td><a href="https://github.com/Dicureck/Dicureck/issues/10">Issue #10 ↗</a></td></tr>
+<tr><td>Official GitHub Releases</td><td>Versioned release drafts and changelogs are prepared; native releases/tags are not yet created.</td><td><a href="https://github.com/Dicureck/Dicureck/issues/11">Issue #11 ↗</a></td></tr>
+</tbody></table></div></section>
+<section id="evidence"><h2>03 / Real browser screenshots &amp; reproducible examples</h2>
+<p class="lede">These screenshots were captured automatically from the live website during a successful GitHub Actions Chromium run. They are not artist concepts or customer dashboards.</p>
+<div class="cards">
+<article class="card"><span class="status">SYNTHETIC · LOGISTICS</span><h3>Delivery operations</h3><p>1,056 synthetic attempts in the original browser fixture, with region filters and on-time metrics.</p><a href="/?demo=logistics#lab">Explore live ↗</a></article>
+<article class="card"><span class="status">SYNTHETIC · FINANCE</span><h3>Financial intelligence</h3><p>Deterministic illustrative totals and category-level filtering, separate from repository fixture values.</p><a href="/?demo=finance#lab">Explore live ↗</a></article>
+<article class="card"><span class="status">SYNTHETIC · INCIDENTS</span><h3>Operational incidents</h3><p>384 fictional incidents, SLA measures and an explicit open-backlog denominator.</p><a href="/?demo=incidents#lab">Explore live ↗</a></article>
+</div>
+<p class="notice"><strong>Download genuine screenshot evidence:</strong> <a href="https://github.com/Dicureck/dicureck.github.io/actions/runs/38812402350/artifacts/12009091909">GitHub Actions browser screenshots artifact ↗</a>. GitHub may require sign-in to download workflow artifacts. Source and timestamp are traceable to the CI run.</p>
+</section>
+<section><h2>04 / Read the architecture</h2><p class="lede">The portfolio also contains technical write-ups with methodology and Mermaid architecture diagrams.</p>
+<div class="cards">
+<article class="card"><h3>Python + AI Automation</h3><p>Validation gates, email previews, safe provider opt-in and test limitations.</p><a href="https://github.com/Dicureck/Dicureck/blob/main/case-studies/ai-automation.md">Architecture ↗</a></article>
+<article class="card"><h3>C# + .NET Reporting</h3><p>Typed CSV pipeline, decimal computations and native BI roadmap.</p><a href="https://github.com/Dicureck/Dicureck/blob/main/case-studies/enterprise-reporting.md">Architecture ↗</a></article>
+<article class="card"><h3>SQL Server Optimization</h3><p>Measured result-equivalent query rewrites and evidence limitations.</p><a href="https://github.com/Dicureck/sql-performance-lab/blob/main/docs/case-studies.md">Case studies ↗</a></article>
+</div></section>
+</main>
+<footer>Melissa Castro · Public engineering evidence &amp; project roadmap · <a href="/">Return to portfolio</a> · No client records or production credentials.</footer>
+</body>
+</html>

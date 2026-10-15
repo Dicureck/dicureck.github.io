@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased] — public roadmap and evidence
+
+- Added [responsive public roadmap and evidence](roadmap.html), linked from the portfolio footer.
+- Linked genuine live-site screenshot artifacts and bounded CI benchmark results.
+- Kept documented future native GitHub Releases/Projects separate from already shipped source.
+
 ## v1.1.0 — 2026-10-15
 
 - Added direct, shareable deep links for all three deterministic synthetic dashboards.

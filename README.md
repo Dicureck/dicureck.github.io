@@ -81,3 +81,8 @@ Open the public, entirely synthetic interactive dashboards directly from a labor
 - [Incident dashboard](https://dicureck.github.io/?demo=incidents#lab)
 
 Static resources use a release query string so updated CSS/JS is less likely to be obscured by browser cache. If an earlier version appears, hard refresh once. No private data is loaded.
+
+
+## Public engineering roadmap and evidence
+
+[Open the roadmap, verification boundaries and genuine GitHub Actions screenshots](https://dicureck.github.io/roadmap.html). It distinguishes the SQL Server runtime benchmark, verified offline labs and unverified future integration work. The public screenshot artifact was captured by the [real-site browser CI](https://github.com/Dicureck/dicureck.github.io/actions/runs/38812402350).
