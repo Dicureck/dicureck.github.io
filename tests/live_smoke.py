@@ -39,7 +39,7 @@ with sync_playwright() as p:
             page.locator("#download-data").click()
         download = download_event.value
         assert download.suggested_filename.startswith(f"synthetic-{mode}-"), mode
-        page.screenshot(path=str(OUT / f"{mode}.png"), full_page=False)
+        page.locator(".lab-console").screenshot(path=str(OUT / f"{mode}-dashboard.png"), animations="disabled")
         print(f"LIVE PASS {mode}: data, 12 bars, filtering controls, CSV, zero JS errors")
         page.close()
     browser.close()
