@@ -71,4 +71,35 @@ with sync_playwright() as p:
     page.screenshot(path=str(OUT / "roadmap-spanish.png"), full_page=False)
     print("LIVE PASS language EN/ES: finance dashboard, INTEBI link, Spanish roadmap")
     page.close()
+    # Independently verify the additional fictional BI page in the public browser.
+    import time
+    page = browser.new_page(viewport={"width": 1280, "height": 850}, accept_downloads=True)
+    errors = []
+    page.on("pageerror", lambda error: errors.append(str(error)))
+    for attempt in range(30):
+        page.goto(BASE + "enterprise-bi.html?lang=es", wait_until="domcontentloaded", timeout=45000)
+        if page.locator("#orders").count() > 0:
+            break
+        time.sleep(7)
+    else:
+        raise AssertionError("Enterprise BI was not published by GitHub Pages")
+    page.wait_for_function("""() => document.querySelector('#orders')?.textContent === '72'""", timeout=20000)
+    assert page.locator("#revenue").inner_text() == "124,344.00"
+    assert page.locator("#margin").inner_text() == "43.27%"
+    assert page.locator("#variance").inner_text() == "900.00"
+    assert page.locator("#bars .bar").count() == 4
+    page.locator("#region").select_option("Central")
+    assert page.locator("#orders").inner_text() == "24"
+    page.locator("#channel").select_option("Partner")
+    assert page.locator("#orders").inner_text() == "12"
+    with page.expect_download(timeout=10000) as download_event:
+        page.locator("#csv").click()
+    assert download_event.value.suggested_filename == "enterprise-bi-synthetic-sales.csv"
+    page.locator('[data-lang="en"]').click()
+    assert page.locator("html").get_attribute("lang") == "en"
+    assert page.locator("h1").inner_text() == "Enterprise business intelligence."
+    assert not errors, errors
+    page.screenshot(path=str(OUT / "enterprise-bi.png"), full_page=False)
+    print("LIVE PASS Enterprise BI: 72 orders, KPIs, filters, CSV, languages, no JS errors")
+    page.close()
     browser.close()

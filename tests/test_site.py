@@ -131,6 +131,24 @@ class SiteTests(unittest.TestCase):
         self.assertIn('SQL SERVER CI VERIFIED', lang_js)
         self.assertIn('ORACLE FREE VERIFIED', lang_js)
 
+    def test_enterprise_bi_page_matches_source_fixture(self):
+        import json
+        import re
+        newpage = (ROOT / "enterprise-bi.html").read_text(encoding="utf-8")
+        self.assertIn('href="enterprise-bi.html"', HTML)
+        self.assertIn('ENTERPRISE BI LIVE', HTML)
+        match = re.search(r'const SALES=(\[.*?\]);\s*const TEXT=', newpage)
+        self.assertIsNotNone(match)
+        sales = json.loads(match.group(1))
+        self.assertEqual(len(sales), 72)
+        self.assertEqual(round(sum(r["revenue_su"] for r in sales), 2), 124344.0)
+        self.assertEqual(round(sum(r["cost_su"] for r in sales), 2), 70536.34)
+        self.assertEqual(round(sum(r["budget_su"] for r in sales), 2), 123444.0)
+        self.assertIn('id="region"', newpage)
+        self.assertIn('id="channel"', newpage)
+        self.assertIn('data-lang="es"', newpage)
+        self.assertIn("enterprise-bi.html", (ROOT / "roadmap.html").read_text(encoding="utf-8"))
+
     def test_public_api_has_no_token(self):
         self.assertIn('https://api.github.com/users/Dicureck/repos?', JS)
         self.assertNotIn('Authorization:', JS)
