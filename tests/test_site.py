@@ -126,10 +126,11 @@ class SiteTests(unittest.TestCase):
     def test_lab_status_badges_match_engine_evidence(self):
         lang_js = (ROOT / 'i18n.20261015.js').read_text(encoding='utf-8')
         self.assertIn('SQL SERVER CI VERIFIED', HTML)
-        self.assertIn('ORACLE FREE VERIFIED', HTML)
+        self.assertIn('TWO-ENGINE PARITY VERIFIED', HTML)
         self.assertNotIn('BENCHMARKS PENDING', HTML)
         self.assertIn('SQL SERVER CI VERIFIED', lang_js)
-        self.assertIn('ORACLE FREE VERIFIED', lang_js)
+        self.assertIn('TWO-ENGINE PARITY VERIFIED', lang_js)
+        self.assertIn('ORACLE FREE VERIFIED', lang_js)  # Backwards-compatible historical translation
 
     def test_enterprise_bi_page_matches_source_fixture(self):
         import json
